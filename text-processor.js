@@ -6,21 +6,21 @@ const separateIntoSentences = (text) => {
   return sentences;
 };
 
-const punctuationSigns = [
-  ',',
-  '.',
-  '¡',
-  '!',
-  '¿',
-  '?',
-  ':',
-  ';',
-  "'",
-  '(',
-  ')',
-];
-
 const separateParagraphsIntoWords = (sentences) => {
+  const punctuationSigns = [
+    ',',
+    '.',
+    '¡',
+    '!',
+    '¿',
+    '?',
+    ':',
+    ';',
+    "'",
+    '(',
+    ')',
+  ];
+
   const result = [];
 
   for (let sentence of sentences) {
@@ -63,6 +63,9 @@ const separateParagraphsIntoWords = (sentences) => {
 };
 
 const paragraphsWithSpaces = (paragraphs) => {
+  const openingPunctuationSigns = ['¡', '¿', '('];
+  const punctuationSigns = [',', '.', '!', '?', ':', ';', "'", ')'];
+
   const result = [];
 
   for (let i = 0; i < paragraphs.length; i += 1) {
@@ -75,8 +78,10 @@ const paragraphsWithSpaces = (paragraphs) => {
 
       modifiedSentence.push(currentWord);
 
-      if (nextWord && !punctuationSigns.includes(nextWord)) {
-        modifiedSentence.push('');
+      if (!openingPunctuationSigns.includes(currentWord)) {
+        if (nextWord && !punctuationSigns.includes(nextWord)) {
+          modifiedSentence.push('');
+        }
       }
     }
 
