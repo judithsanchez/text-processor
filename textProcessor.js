@@ -39,6 +39,16 @@ class TextProcessor {
   ];
 
   constructor(text) {
+    if (typeof text !== 'string') {
+      throw new Error('TextProcessor can only be initialized with a string.');
+    }
+
+    if (text.trim().length === 0) {
+      throw new Error(
+        'TextProcessor cannot be initialized with an empty string.'
+      );
+    }
+
     this.processedText = this.processText(text);
   }
 
@@ -113,6 +123,41 @@ class TextProcessor {
 }
 
 const newText = new TextProcessor(sampleText);
-console.log(newText);
+// console.log(newText);
+
+// describe('Character presence in tokens', () => {
+//   test('should have specified characters present in the tokens if present in the original text', () => {
+//     const specialCharacters = [
+//       'ñ',
+//       'Ñ',
+//       'á',
+//       'Á',
+//       'é',
+//       'É',
+//       'í',
+//       'Í',
+//       'ó',
+//       'Ó',
+//       'ú',
+//       'Ú',
+//     ];
+
+//     specialCharacters.forEach((character) => {
+//       const isCharacterPresentInText = sampleText.includes(character);
+
+//       if (isCharacterPresentInText) {
+//         const isCharacterPresentInTokens = textProcessor.processedText.some(
+//           (sentence) => {
+//             return sentence.tokens.some((token) =>
+//               token.token.includes(character)
+//             );
+//           }
+//         );
+
+//         expect(isCharacterPresentInTokens).toBe(true);
+//       }
+//     });
+//   });
+// });
 
 module.exports = TextProcessor;
