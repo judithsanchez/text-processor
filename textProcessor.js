@@ -122,42 +122,4 @@ class TextProcessor {
   }
 }
 
-const newText = new TextProcessor(sampleText);
-// console.log(newText);
-
-// describe('Character presence in tokens', () => {
-//   test('should have specified characters present in the tokens if present in the original text', () => {
-//     const specialCharacters = [
-//       'ñ',
-//       'Ñ',
-//       'á',
-//       'Á',
-//       'é',
-//       'É',
-//       'í',
-//       'Í',
-//       'ó',
-//       'Ó',
-//       'ú',
-//       'Ú',
-//     ];
-
-//     specialCharacters.forEach((character) => {
-//       const isCharacterPresentInText = sampleText.includes(character);
-
-//       if (isCharacterPresentInText) {
-//         const isCharacterPresentInTokens = textProcessor.processedText.some(
-//           (sentence) => {
-//             return sentence.tokens.some((token) =>
-//               token.token.includes(character)
-//             );
-//           }
-//         );
-
-//         expect(isCharacterPresentInTokens).toBe(true);
-//       }
-//     });
-//   });
-// });
-
 module.exports = TextProcessor;
