@@ -36,6 +36,18 @@ describe('TextProcessor', () => {
   });
 
   describe('Text processing', () => {
+    const sampleSentence = new TextProcessor(
+      'Hola, ¿cómo estás? - Yo estoy muy bien.'
+    );
+
+    test('should separate the sentence into tokens without altering the characters', () => {
+      expect(sampleSentence.processedText[0].tokens.length).toBe(12);
+      expect(sampleSentence.processedText[0].tokens[0].token).toBe('Hola');
+      expect(sampleSentence.processedText[0].tokens[2].token).toBe('¿');
+      expect(sampleSentence.processedText[0].tokens[3].token).toBe('cómo');
+      expect(sampleSentence.processedText[0].tokens[11].token).toBe('.');
+    });
+
     let textProcessor;
 
     beforeEach(() => {
